@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "type": "array",
+    "items": {
+        "$ref": "#/definitions/Welcome4Element"
+    },
+    "definitions": {
+        "Welcome4Element": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "color": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "comment_count": {
+                    "type": "integer"
+                },
+                "shared": {
+                    "type": "boolean"
+                },
+                "favorite": {
+                    "type": "boolean"
+                },
+                "sync_id": {
+                    "type": "integer"
+                },
+                "inbox_project": {
+                    "type": "boolean"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ]
+                },
+                "order": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "color",
+                "comment_count",
+                "favorite",
+                "id",
+                "name",
+                "shared",
+                "sync_id",
+                "url"
+            ],
+            "title": "Welcome4Element"
+        }
+    }
+}
