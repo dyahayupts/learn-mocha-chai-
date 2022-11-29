@@ -1,4 +1,4 @@
-const { faker } = require('@faker-js/faker');
+//const { faker } = require('@faker-js/faker');
 const chai = require('chai')
 const data = require('../../src/json_schema/sections/createSection.json')
 const expect = require('chai').expect
@@ -13,7 +13,6 @@ module.exports = function() {
     describe('Create Section',() => {
 
         it('Success create a section', (done) => {
-            const name = faker.name.fullName();
 
             let api = chai.request('https://api.todoist.com/rest/v1');
             api.post(`/sections`)
@@ -21,17 +20,17 @@ module.exports = function() {
             .set("Content-type", "application/json")
             .send({
                 project_id : "2295879405",
-                name : name + " Section",
+                name : "Boulevard Event",
             })
             .end(function(err, res){
                 expect(res.statusCode).to.equals(200);
-                //expect(res.body).to.be.jsonSchema(full);
+                expect(res.body).to.be.jsonSchema(data);
                 //expect(res.body.name).to.equals(name);
                 done();
             })
         })
 
-        it('Failed create section with name = Null', (done) => {
+        it('Failed create section with empty name', (done) => {
 
             let api = chai.request('https://api.todoist.com/rest/v1');
             api.post(`/sections`)
@@ -39,11 +38,11 @@ module.exports = function() {
             .set("Content-type", "application/json")
             .send({
                 project_id : "2295879405",
-                name : null
+                name : ""
             })
             .end(function(err, res){
                 expect(res.statusCode).to.equals(400);
-                //expect(res.body).to.be.jsonSchema(full);
+                //expect(res.body).to.be.jsonSchema(data);
                 //expect(res.body.name).to.equals(name);
                 done();
             })

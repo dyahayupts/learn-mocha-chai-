@@ -6,6 +6,7 @@ chai.use(require('chai-json-schema'))
 require('dotenv').config()
 
 const api = chai.request(process.env.APP_DEV);
+let endpointProject = "/projects/";
 
 module.exports = function() {
 
@@ -13,13 +14,13 @@ module.exports = function() {
 
         it('Success Get All Projects', (done) => {
             
-            let api = chai.request('https://api.todoist.com/rest/v1');
-            api.get('/projects')
-            .set("Authorization", "Bearer 23d02ef9cdf4ccb9b311e06bdbe92c74125a020d")
+            api.get(endpointProject)
+            .set("Authorization", "Bearer " + process.env.token)
             .query('page', 1)
             .end(function(err, res){
+                console.log(res.body);
                 expect(res.statusCode).to.equal(200);
-                expect(res.body).to.be.jsonSchema(data);
+                expect(res.body).to.be.jsonSchema(data.validData);
                 global.idProject = res.body[0].id;
                 done();
             })

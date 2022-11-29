@@ -18,7 +18,7 @@ module.exports = function() {
                 .end(function(err, res){
                     expect(res.statusCode).to.equals(200);
                     expect(res.body.id).to.equals(global.idProject);
-                    //expect(res.body).to.be.jsonSchema(data.positive);
+                    //expect(res.body).to.be.jsonSchema(data);
                     done();
                 })
         })
@@ -29,7 +29,7 @@ module.exports = function() {
             .set("Authorization", "Bearer 23d02ef9cdf4ccb9b311e06bdbe92c74125a020d")
                 .end(function(err, res){
                     expect(res.statusCode).to.equals(404);
-                    //expect(res.body).to.be.jsonSchema(data.negative);
+                    //expect(res.body).to.be.jsonSchema(data);
                     done();
                 })
         })

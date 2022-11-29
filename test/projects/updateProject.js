@@ -1,4 +1,5 @@
 const chai = require('chai')
+const data = require('../../src/json_schema/projects/updateProject.json')
 const expect = require('chai').expect
 chai.use(require('chai-http'))
 require('dotenv').config()

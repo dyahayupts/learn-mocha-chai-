@@ -24,13 +24,13 @@ module.exports = function() {
             })
             .end(function(err, res){
                 expect(res.statusCode).to.equals(200);
-                //expect(res.body).to.be.jsonSchema(full);
+                expect(res.body).to.be.jsonSchema(data);
                 //expect(res.body.name).to.equals(name);
                 done();
             })
         })
 
-        it('Failed create project with name = Null', (done) => {
+        it('Failed create project with empty name', (done) => {
 
             let api = chai.request('https://api.todoist.com/rest/v1');
             api.post(`/projects`)
@@ -41,7 +41,7 @@ module.exports = function() {
             })
             .end(function(err, res){
                 expect(res.statusCode).to.equals(400);
-                //expect(res.body).to.be.jsonSchema(full);
+                //expect(res.body).to.be.jsonSchema(data);
                 //expect(res.body.name).to.equals(name);
                 done();
             })
