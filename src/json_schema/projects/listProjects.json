@@ -1,4 +1,5 @@
 {
+    "validData" : [{
     "$schema": "http://json-schema.org/draft-06/schema#",
     "type": "array",
     "items": {
@@ -57,4 +58,10 @@
             "title": "Welcome4Element"
         }
     }
+}], 
+
+"invalidData" : []
+
 }
+
+
