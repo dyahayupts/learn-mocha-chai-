@@ -1,4 +1,5 @@
 const chai = require('chai')
+const { ep_deleteProject } = require('../../src/endpoint/projects/projects.js')
 const data = require('../../src/json_schema/projects/deleteProject.json')
 const expect = require('chai').expect
 chai.use(require('chai-http'))
@@ -9,11 +10,11 @@ const api = chai.request(process.env.APP_DEV);
 module.exports = function (){
 	describe('Delete A Project',() => {
 		it('Success Delete A Project', (done) => {
-            let api = chai.request('https://api.todoist.com/rest/v1');
-            api.delete("/projects/2303206119")
-	      	.set("Authorization", "Bearer ea19ce9f20f84bcf0fe813977ff903b58b8bf73c")
+            api.delete(ep_deleteProject + global.idProject)
+	      	.set("Authorization", "Bearer " + process.env.token)
 		    .end(function (err, res) {
-		        expect(res.status).to.equals(204);
+		        expect(res.statusCode).to.equals(204);
+                expect(res.body).to.be.jsonSchema(data.validData);
 		        done();
 		    });
 		});

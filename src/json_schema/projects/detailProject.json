@@ -1,55 +1,61 @@
 {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Welcome4",
-    "definitions": {
-        "Welcome4": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "integer"
+    "validData" : [{
+        "$schema": "http://json-schema.org/draft-06/schema#",
+        "$ref": "#/definitions/Welcome10",
+        "definitions": {
+            "Welcome10": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "order": {
+                        "type": "integer"
+                    },
+                    "color": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "comment_count": {
+                        "type": "integer"
+                    },
+                    "shared": {
+                        "type": "boolean"
+                    },
+                    "favorite": {
+                        "type": "boolean"
+                    },
+                    "sync_id": {
+                        "type": "integer"
+                    },
+                    "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "qt-uri-protocols": [
+                            "https"
+                        ]
+                    }
                 },
-                "order": {
-                    "type": "integer"
-                },
-                "color": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "comment_count": {
-                    "type": "integer"
-                },
-                "shared": {
-                    "type": "boolean"
-                },
-                "favorite": {
-                    "type": "boolean"
-                },
-                "sync_id": {
-                    "type": "integer"
-                },
-                "url": {
-                    "type": "string",
-                    "format": "uri",
-                    "qt-uri-protocols": [
-                        "https"
-                    ]
-                }
-            },
-            "required": [
-                "color",
-                "comment_count",
-                "favorite",
-                "id",
-                "name",
-                "order",
-                "shared",
-                "sync_id",
-                "url"
-            ],
-            "title": "Welcome4"
+                "required": [
+                    "color",
+                    "comment_count",
+                    "favorite",
+                    "id",
+                    "name",
+                    "order",
+                    "shared",
+                    "sync_id",
+                    "url"
+                ],
+                "title": "Welcome10"
+            }
         }
-    }
+    }],
+
+    "invalidData" : [{
+        
+    }]
 }

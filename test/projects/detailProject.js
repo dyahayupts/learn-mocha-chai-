@@ -1,4 +1,5 @@
 const chai = require('chai')
+const { ep_detailProject } = require('../../src/endpoint/projects/projects.js');
 const data = require('../../src/json_schema/projects/detailProject.json')
 const expect = require('chai').expect
 chai.use(require('chai-http'))
@@ -12,26 +13,36 @@ module.exports = function() {
     describe('Detail project',() => {
 
         it('Success get detail of project', (done) => {
-            let api = chai.request('https://api.todoist.com/rest/v1');
-            api.get("/projects/"+global.idProject)
-            .set("Authorization", "Bearer 23d02ef9cdf4ccb9b311e06bdbe92c74125a020d")
+            api.get(ep_detailProject + global.idProject)
+            .set("Authorization", "Bearer " + process.env.token)
                 .end(function(err, res){
                     expect(res.statusCode).to.equals(200);
+                    //console.log(res.body);
                     expect(res.body.id).to.equals(global.idProject);
-                    //expect(res.body).to.be.jsonSchema(data);
+                    expect(res.body).to.be.jsonSchema(data.validData);
+                    done();
+                })
+        }) 
+
+        it('Get detail project with id not found', (done) => {
+            api.get(ep_detailProject + '1')
+            .set("Authorization", "Bearer " + process.env.token)
+                .end(function(err, res){
+                    expect(res.statusCode).to.equals(404);
+                    expect(res.body).to.be.jsonSchema(data.invalidData);
                     done();
                 })
         })
 
-        it('Get detail project with id not found', (done) => {
-            let api = chai.request('https://api.todoist.com/rest/v1');
-            api.get("/projects/0")
-            .set("Authorization", "Bearer 23d02ef9cdf4ccb9b311e06bdbe92c74125a020d")
+        it('Get detail project with no token', (done) => {
+            api.get(ep_detailProject + global.idProject)
+            .set("Authorization", "Bearer " + null)
                 .end(function(err, res){
-                    expect(res.statusCode).to.equals(404);
-                    //expect(res.body).to.be.jsonSchema(data);
+                    expect(res.statusCode).to.equals(401);
+                    expect(res.body).to.be.jsonSchema(data.invalidData); 
                     done();
                 })
         })
+
     })
 }
