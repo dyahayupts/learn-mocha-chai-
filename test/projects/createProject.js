@@ -41,10 +41,24 @@ module.exports = function() {
             })
             .end(function(err, res){
                 expect(res.statusCode).to.equals(400);
-                expect(res.body).to.be.jsonSchema(data.emptyName);
                 done();
             })
         })
+
+        // Error API : 500
+        // it('Failed create project with name = integer', (done) => {
+
+        //     api.post(ep_createProject)
+        //     .set("Authorization", "Bearer " + process.env.token)
+        //     .set("Content-type", "application/json")
+        //     .send({
+        //         name : 123,
+        //     })
+        //     .end(function(err, res){
+        //         expect(res.statusCode).to.equals(400);
+        //         done();
+        //     })
+        // })
 
     })
 
