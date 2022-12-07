@@ -1,34 +1,40 @@
 {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "type": "array",
-    "items": {
-        "$ref": "#/definitions/Welcome2Element"
-    },
-    "definitions": {
-        "Welcome2Element": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "integer"
+    "validData" : [{
+        "$schema": "http://json-schema.org/draft-06/schema#",
+        "type": "array",
+        "items": {
+            "$ref": "#/definitions/Welcome2Element"
+        },
+        "definitions": {
+            "Welcome2Element": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "project_id": {
+                        "type": "integer"
+                    },
+                    "order": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
                 },
-                "project_id": {
-                    "type": "integer"
-                },
-                "order": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                "name",
-                "order",
-                "project_id"
-            ],
-            "title": "Welcome2Element"
+                "required": [
+                    "id",
+                    "name",
+                    "order",
+                    "project_id"
+                ],
+                "title": "Welcome2Element"
+            }
         }
-    }
+    }],
+
+    "invalidData" : [{
+        
+    }]
 }
